@@ -1,9 +1,13 @@
 @import url(../fonts/stylesheet.css);
+@transpColor: rgba(255, 240, 230, 0.7);
 
-html {
+html, body {
 	// android hack na cover background
 	height:100%;
 	min-height:100%;
+	width: 100%;
+	padding: 0;
+	margin: 0;
 }
 
 body {
@@ -14,11 +18,6 @@ body {
 	// text-transform: uppercase;
 	// letter-spacing: -1px;
 	
-	width: 100%;
-	height: 100%;
-	padding: 0;
-	margin: 0;
-
 	background-attachment: fixed;
 	background-position: center top;
 	background-size: cover;
@@ -26,6 +25,13 @@ body {
 
 	// android hack na cover background
 	min-height:100%;
+
+	a {
+		color: inherit;
+		&:hover {
+			text-decoration: none;
+		}
+	}
 }
 
 article {
@@ -34,26 +40,20 @@ article {
 
 .overlay {
 	background-color: rgba(0,0,0,0.2);
-	min-height: 100%;
+	// height: 100%;
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
 }
 
-.left {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 25%;
-	height: 100%;
+.content {
+	flex: 1;
+	padding: 2em 15% 0 15%;
+	@media (max-width:800px) {
+		padding: 0 5%;
+	}
 
-	text-transform: uppercase;
-}
-
-.right {
-	margin-left: 25%;
-	margin-right: 25%;
-	padding-top: 3em;
-	height: 100%;
-	// text-align: justify;
-
+	text-align: justify;
 	h1 {
 		font-size: inherit;
 		text-decoration: underline;
@@ -61,7 +61,6 @@ article {
 		font-weight: normal;
 		padding: 0;
 		margin: 0;
-		margin-bottom: 4.4em;
 	}
 
 	h3 {
@@ -74,13 +73,73 @@ article {
 	}
 }
 
-.menu {
-	list-style: none;
-	padding-top: 3em;
-	padding-left: 2em;
-	margin: 0;
+.bottom {
+	.menu {
+		list-style: none;
+		margin: 0;
+		padding: 0 2em;
+
+		text-transform: uppercase;
+		text-align: justify;
+		.menu-item {
+			display: inline-block;
+		}
+
+		&:after {
+			position: relative;
+			display: inline-block;
+			width: 100%;
+			height: 0;
+			line-height: 0;
+			content: '';
+		}
+	}
 }
 
-a {
-	color: inherit;
+.triangle {
+	width: 0;
+	height: 0;
+	border-style: solid;
+	&.down {
+		margin: auto;
+		margin-bottom: 1em;
+		border-width: 30px 100px 0 100px;
+		border-color: @transpColor transparent transparent transparent;
+	}
+}
+
+.slide-down-button {
+	cursor: pointer;
+}
+
+.poster {
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+
+	color: @transpColor;
+
+	.invert {
+		background-color: @transpColor;
+		color: #777;
+		height: 0.75em;
+		line-height: 0.75em;
+		display: inline-block;
+
+	}
+
+	h1 {
+		text-decoration: none;
+		font-size: 36pt;
+	}
+	.plevel {
+		font-size: 90pt;
+		margin-top: -0.1em;
+	}
+	.podnadpis {
+		margin-bottom: 0.5em;
+	}
+	.misto, .web {
+		margin-bottom: -0.1em;
+	}
 }
